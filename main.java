@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.io.File;
+import java.io.FileNotFoundException;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -21,6 +22,12 @@ public class Main {
         // Close the scanner
         reader.close();
     }
+    /**
+     * Checks the first digit frequency to see if there is fraud or not.
+     * 
+     * @param freq - the array that contains the frequency of each number
+     * @param sum - the sum of every leading digit
+     */
     public static void checkFraud(int[] freq, int sum) {
         // If the frequency of one is between 0.29 - 0.32, fraud probably did not occur
         if (1.0 * freq[0] / sum > 0.32 || 1.0 * freq[0] / sum < 0.29) {
@@ -30,6 +37,12 @@ public class Main {
             System.out.println("Fraud probably did not occur.");
         }
     }
+    /**
+     * Takes an array and returns the sum of each element.
+     * 
+     * @param arr - an array of type integer
+     * @return The sum of every element in the array
+     */
     public static int getSum(int[] arr) {
         int sum = 0; // Initialise Variable
 
@@ -39,7 +52,14 @@ public class Main {
         }
         return sum;
     }
-    public static int[] populateFrequency(File file) throws Exception {
+    /**
+     * Populates the frequency of the leading digit for every area.
+     * 
+     * @param file - the csv file that contains the sales
+     * @return An array that gives the frequency of each digit
+     * @throws FileNotFoundException If there is no file that is given 
+     */
+    public static int[] populateFrequency(File file) throws FileNotFoundException {
         // Initialise Scanner
         Scanner reader = new Scanner(file);
         int temp; // Used for temporary storage
@@ -68,6 +88,11 @@ public class Main {
         reader.close(); // Close the scanner
         return frequency;
     }
+    /**
+     * Gets the csv file from the folder.
+     * 
+     * @return The file that was specified
+     */
     public static File getFile() {
         Scanner reader = new Scanner(System.in);
         // File location
