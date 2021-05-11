@@ -9,15 +9,10 @@ public class Main {
         File file = getFile();
         Scanner reader = new Scanner(file);
 
-        // Get the frequency of each number in the file
-        frequency = populateFrequency(file);
-
         // Close the scanner
         reader.close();
     }
-    public static int[] populateFrequency(File file) {
 
-    }
     public static File getFile() {
         Scanner reader = new Scanner(System.in);
         // File location
