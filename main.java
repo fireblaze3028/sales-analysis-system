@@ -15,10 +15,20 @@ public class Main {
         // Get the sum of frequency
         int frequencySum = getSum(frequency);
 
-
+        // Check to see if there's fraud
+        checkFraud(frequency, frequencySum);
 
         // Close the scanner
         reader.close();
+    }
+    public static void checkFraud(int[] freq, int sum) {
+        // If the frequency of one is between 0.29 - 0.32, fraud probably did not occur
+        if (1.0 * freq[0] / sum > 0.32 || 1.0 * freq[0] / sum < 0.29) {
+            System.out.println("Fraud may have occured.");
+        }
+        else {
+            System.out.println("Fraud probably did not occur.");
+        }
     }
     public static int getSum(int[] arr) {
         int sum = 0; // Initialise Variable
