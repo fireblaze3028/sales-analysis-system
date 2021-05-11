@@ -12,12 +12,22 @@ public class Main {
         // Get the frequency of each number in the file
         frequency = populateFrequency(file);
 
-        for (int i: frequency) {
-            System.out.print(i + ",");
-        }
+        // Get the sum of frequency
+        int frequencySum = getSum(frequency);
+
+
 
         // Close the scanner
         reader.close();
+    }
+    public static int getSum(int[] arr) {
+        int sum = 0; // Initialise Variable
+
+        // For each integer in the array, add
+        for (int i: arr) {
+            sum += i;
+        }
+        return sum;
     }
     public static int[] populateFrequency(File file) throws Exception {
         // Initialise Scanner
