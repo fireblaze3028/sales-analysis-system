@@ -26,6 +26,13 @@ public class Main {
         // Close the scanner
         reader.close();
     }
+    /**
+     * Exports the data from the array into a csv file.
+     * 
+     * @param freq - the array for the frequency of each number
+     * @param sum - the sum of all frequencies in each number
+     * @throws Exception If the file is invalid
+     */
     public static void exportData(int[] freq, int sum) throws Exception {
         File export = new File("export.csv");
         String text = "";
