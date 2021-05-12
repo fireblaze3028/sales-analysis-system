@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.FileNotFoundException;
 
 public class Main {
@@ -19,8 +20,48 @@ public class Main {
         // Check to see if there's fraud
         checkFraud(frequency, frequencySum);
 
+        // Export the data to a csv file
+        exportData(frequency, frequencySum);
+
         // Close the scanner
         reader.close();
+    }
+    public static void exportData(int[] freq, int sum) throws Exception {
+        File export = new File("export.csv");
+        String text = "";
+        String delimiter = ",";
+
+        if (!export.exists()) {
+            export.createNewFile();
+        }
+        FileWriter writer = new FileWriter("export.csv");
+
+        writer.write("Digit,Frequency,Percentage");
+
+        for (int i = 0; i < freq.length; i++) {
+            text += "\n";
+            text += i + 1;
+            text += delimiter;
+            text += freq[i];
+            text += delimiter;
+            text += round(100.0 * freq[i] / sum, 2);
+            text += "%";
+        }
+        writer.write(text);
+
+        writer.close();
+    }
+    /**
+     * Rounds a number by how many digits you enter.
+     * @param num - the number you want to round
+     * @param roundBy - the amount of digits you want to round by.
+     * For example, if you enter 2 as the number of digits, 323.253251 will become 323.25.
+     * @return The rounded number.
+     */
+    public static double round(double num, int roundBy) {
+        double temp = num * Math.pow(10, roundBy);
+        temp = Math.round(temp);
+        return temp / Math.pow(10, roundBy);
     }
     /**
      * Checks the first digit frequency to see if there is fraud or not.
