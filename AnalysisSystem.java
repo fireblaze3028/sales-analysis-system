@@ -7,6 +7,7 @@ public class AnalysisSystem {
     public static void main(String[] args) throws Exception {
         // Initalise Variables
         int[] frequency = new int[9]; // 9 indexes for each number (1, 2, 3, 4, etc)
+        double[] frequencyPercentage = new double[9]; // Used for graphing
         // Get the file
         File file = getFile();
         Scanner reader = new Scanner(file);
@@ -17,6 +18,9 @@ public class AnalysisSystem {
         // Get the sum of frequency
         int frequencySum = getSum(frequency);
 
+        // Get the percentages to use for graphing
+        frequencyPercentage = getPercentage(frequency, frequencySum);
+
         // Check to see if there's fraud
         checkFraud(frequency, frequencySum);
 
@@ -25,6 +29,21 @@ public class AnalysisSystem {
 
         // Close the scanner
         reader.close();
+    }
+    /**
+     * Gets the percentage of any array
+     * 
+     * @param frequency - an array of type int
+     * @param frequencySum - the sum of the array
+     * @return The percentage of each index in an array
+     */
+    public static double[] getPercentage(int[] arr, int sum) {
+        double[] frequencyPercentage = new double[9];
+        for (int i = 0; i < arr.length; i++) {
+            frequencyPercentage[i] = round(100.0 * arr[i] / sum, 2);
+        }
+
+        return frequencyPercentage;
     }
     /**
      * Exports the data from the array into a csv file.
