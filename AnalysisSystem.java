@@ -3,7 +3,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.FileNotFoundException;
 
-public class Main {
+public class AnalysisSystem {
     public static void main(String[] args) throws Exception {
         // Initalise Variables
         int[] frequency = new int[9]; // 9 indexes for each number (1, 2, 3, 4, etc)
@@ -50,15 +50,19 @@ public class Main {
 
         for (int i = 0; i < freq.length; i++) {
             text += "\n";
+            // Digit
             text += i + 1;
             text += delimiter;
+            // Frequency
             text += freq[i];
             text += delimiter;
+            // Percentage
             text += round(100.0 * freq[i] / sum, 2);
             text += "%";
         }
+        // Write the data to file
         writer.write(text);
-
+        // Close the writer
         writer.close();
     }
     /**
