@@ -25,34 +25,40 @@ public class AnalysisSystem {
         checkFraud(frequency, frequencySum);
 
         // Export the data to a csv file
-        exportData(frequency, frequencySum);
+        exportData(frequency, frequencySum, frequencyPercentage);
 
         // Close the scanner
         reader.close();
     }
+
     /**
      * Gets the percentage of any array
      * 
-     * @param frequency - an array of type int
-     * @param frequencySum - the sum of the array
+     * @param arr - an array of type int
+     * @param sum - the sum of the array
      * @return The percentage of each index in an array
      */
     public static double[] getPercentage(int[] arr, int sum) {
+        // Initalise Variables
         double[] frequencyPercentage = new double[9];
+
+        // For each index, get percentage and round to 2 digits
         for (int i = 0; i < arr.length; i++) {
             frequencyPercentage[i] = round(100.0 * arr[i] / sum, 2);
         }
 
         return frequencyPercentage;
     }
+
     /**
      * Exports the data from the array into a csv file.
      * 
      * @param freq - the array for the frequency of each number
      * @param sum - the sum of all frequencies in each number
+     * @param freqPercentage - the array for the frequency of each number displayed in percentages
      * @throws Exception If the file is invalid
      */
-    public static void exportData(int[] freq, int sum) throws Exception {
+    public static void exportData(int[] freq, int sum, double[] freqPercentage) throws Exception {
         // Initialise Variables
         File export = new File("export.csv");
         String text = "";
@@ -76,7 +82,7 @@ public class AnalysisSystem {
             text += freq[i];
             text += delimiter;
             // Percentage
-            text += round(100.0 * freq[i] / sum, 2);
+            text += freqPercentage[i];
             text += "%";
         }
         // Write the data to file
@@ -84,6 +90,7 @@ public class AnalysisSystem {
         // Close the writer
         writer.close();
     }
+
     /**
      * Rounds a number by how many digits you enter.
      * @param num - the number you want to round
@@ -96,6 +103,7 @@ public class AnalysisSystem {
         temp = Math.round(temp);
         return temp / Math.pow(10, roundBy);
     }
+
     /**
      * Checks the first digit frequency to see if there is fraud or not.
      * 
@@ -111,6 +119,7 @@ public class AnalysisSystem {
             System.out.println("Fraud probably did not occur.");
         }
     }
+
     /**
      * Takes an array and returns the sum of each element.
      * 
@@ -126,6 +135,7 @@ public class AnalysisSystem {
         }
         return sum;
     }
+
     /**
      * Populates the frequency of the leading digit for every area.
      * 
@@ -162,6 +172,7 @@ public class AnalysisSystem {
         reader.close(); // Close the scanner
         return frequency;
     }
+    
     /**
      * Gets the csv file from the folder.
      * 
