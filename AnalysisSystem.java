@@ -10,10 +10,14 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.FileNotFoundException;
 
+/**
+ * @author Marc and Nawkito
+ * @version 1.0
+ */
 public class AnalysisSystem {
     public static void main(String[] args) throws Exception {
         // Initalise Variables
-        int[] frequency = new int[9]; // 9 indexes for each number (1, 2, 3, 4, etc)
+        int[] frequency = new int[9]; // 9 indexes for each number (1, 2, 3, 4, etc), 0th index is for number 1
         double[] frequencyPercentage = new double[9]; // Used for graphing
         // Get the file
         File file = getFile();
