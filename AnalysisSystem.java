@@ -21,7 +21,6 @@ public class AnalysisSystem {
         double[] frequencyPercentage = new double[9]; // Used for graphing
         // Get the file
         File file = getFile();
-        Scanner reader = new Scanner(file);
 
         // Get the frequency of each number in the file
         frequency = populateFrequency(file);
@@ -38,8 +37,6 @@ public class AnalysisSystem {
         // Export the data to a csv file
         exportData(frequency, frequencySum, frequencyPercentage);
 
-        // Close the scanner
-        reader.close();
     }
 
     /**
