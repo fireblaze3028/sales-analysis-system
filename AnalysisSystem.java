@@ -1,3 +1,10 @@
+/*
+ * Names: Marc and Nawkito
+ * Date: May 6, 2021
+ * Teacher: Mr. Ho
+ * Description: System to analyze sales data and determine if it is fradulent or not.
+ */
+
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileWriter;
